@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🩸 MTFTT: Multi-Task Feature-Token Transformer
+# MTFTT: Multi-Task Feature-Token Transformer
 
 ### Attention-Guided Anemia Subtyping from Routine CBC Data
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#-overview)
 - [Architecture](#-architecture)
@@ -26,7 +26,7 @@
 
 ---
 
-## 🔬 Overview
+## Overview
 
 **MTFTT (Multi-Task Feature-Token Transformer)** is a deep learning framework designed for automated anemia subtyping from routine Complete Blood Count (CBC) data. It classifies patients into five diagnostic categories:
 
@@ -48,7 +48,7 @@
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```
 Input (32 features)
@@ -97,7 +97,7 @@ Input (32 features)
 
 ---
 
-## 📊 Key Results
+## Key Results
 
 ### Multi-Class Performance (test set, n=2,296)
 
@@ -144,7 +144,7 @@ Input (32 features)
 
 ---
 
-## ⚙ Installation
+## Installation
 
 ### Prerequisites
 
@@ -181,7 +181,7 @@ tqdm>=4.65.0
 
 ---
 
-## 📦 Dataset
+## Dataset
 
 The model uses the **Kılıçarslan et al. Anemia Disease Dataset** containing 15,300 CBC records from Tokat Gaziosmanpaşa University, Turkey (2013–2018).
 
@@ -198,7 +198,7 @@ MTFTT/
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### Train the Main Model
 
@@ -253,7 +253,7 @@ class CFG:
 
 ---
 
-## 🔄 Training Pipeline
+## Training Pipeline
 
 ```
 1. Data Loading & Validation
@@ -285,7 +285,7 @@ class CFG:
 
 ---
 
-## 🧪 Ablation Study
+## Ablation Study
 
 Systematic evaluation of 11 configurations to isolate each component's contribution:
 
@@ -307,7 +307,7 @@ Systematic evaluation of 11 configurations to isolate each component's contribut
 
 ---
 
-## 🔍 Explainability (XAI)
+## Explainability (XAI)
 
 Four complementary attribution methods provide multi-faceted interpretability:
 
@@ -335,7 +335,6 @@ The model shows progressive attention behavior across encoder depth:
 
 <div align="center">
 
-**Made with ❤️ for clinical AI research**
 
 If you find this work useful, please ⭐ the repository!
 
