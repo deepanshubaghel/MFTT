@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🩸 MTFTT — Multi-Task Feature-Token Transformer
+# 🩸 MTFTT: Multi-Task Feature-Token Transformer
 
 ### Attention-Guided Anemia Subtyping from Routine CBC Data
 
-*A calibrated, interpretable Transformer for five-class anemia classification, binary screening, and hemoglobin prediction — all in a single forward pass.*
+*A calibrated, interpretable Transformer for five-class anemia classification, binary screening, and hemoglobin prediction all in a single forward pass.*
 
 </div>
 
@@ -40,11 +40,11 @@
 
 ### Why MTFTT?
 
-- **Unified framework** — subtype classification, binary screening, HGB regression, and uncertainty estimation in one model
-- **Handles extreme imbalance** — 63.7:1 majority-to-minority ratio via SMOTE + curriculum learning + Focal–Dice loss
-- **Clinically calibrated** — temperature scaling reduces ECE to 0.42%, making probabilities trustworthy for clinical decisions
-- **Interpretable** — four XAI methods converge on features aligned with WHO diagnostic criteria
-- **Deployable** — 4.88M parameters, 18.6 MB memory, 0.062 ms per-sample latency
+- **Unified framework**: subtype classification, binary screening, HGB regression, and uncertainty estimation in one model
+- **Handles extreme imbalance**: 63.7:1 majority-to-minority ratio via SMOTE + curriculum learning + Focal–Dice loss
+- **Clinically calibrated**: temperature scaling reduces ECE to 0.42%, making probabilities trustworthy for clinical decisions
+- **Interpretable**: four XAI methods converge on features aligned with WHO diagnostic criteria
+- **Deployable**: 4.88M parameters, 18.6 MB memory, 0.062 ms per-sample latency
 
 ---
 
@@ -60,18 +60,18 @@ Input (32 features)
 ┌─────────────────────────────────┐
 │   Feature Tokenization          │
 │   Scalar Embedding + ID Embed   │
-│   → [B, 32, 256]               │
+│   → [B, 32, 256]                │
 └─────────────┬───────────────────┘
               ▼
 ┌─────────────────────────────────┐
 │   Transformer Encoder (×6)      │
 │   8 heads, d_model=256          │
-│   d_ff=1024, GELU, LayerNorm   │
+│   d_ff=1024, GELU, LayerNorm    │
 └─────────────┬───────────────────┘
               ▼
 ┌─────────────────────────────────┐
 │   Attention Pooling             │
-│   [B, 32, 256] → [B, 256]      │
+│   [B, 32, 256] → [B, 256]       │
 │   + Clinical Prior Reg.         │
 └─────────────┬───────────────────┘
               ▼
@@ -141,57 +141,6 @@ Input (32 features)
 | Throughput | ~16,047 samples/s |
 | Training time | ~15.3 min (single GPU) |
 
----
-
-## 📁 Repository Structure
-
-```
-MTFTT/
-│
-├── README.md                        # This file
-├── LICENSE                          # MIT License
-├── requirements.txt                 # Python dependencies
-│
-├── MTFTT_Proposed_Model.py          # Main model: training + evaluation + XAI
-├── MTFTT_Ablation.py                # Ablation study: 11 variant experiments
-│
-├── SKILICARSLAN_Anemia_DataSet.csv  # Dataset (download from Kaggle)
-│
-└── Final_MTFTT_OUTPUTS/             # Auto-generated output directory
-    └── <run_timestamp>/
-        ├── config.json              # Run configuration snapshot
-        ├── plots/                   # All visualizations + PDF report
-        │   ├── *_PLOTS.pdf          # Combined PDF of all plots
-        │   ├── *_cm.png             # Confusion matrices
-        │   ├── *_roc_ovr.png        # ROC curves
-        │   ├── *_pr_ovr.png         # Precision-Recall curves
-        │   ├── *_reliability_*.png  # Calibration reliability diagrams
-        │   ├── *_decision_curve.png # DCA plot
-        │   ├── *_xai_*.png          # XAI visualizations
-        │   └── *_L*_attn_*.png      # Per-layer attention maps
-        ├── tables/                  # CSV results and metrics
-        │   ├── *_results_table.csv  # Summary metrics
-        │   ├── *_confusion_matrix.csv
-        │   ├── *_per_class_report.csv
-        │   ├── *_per_class_metrics.csv
-        │   ├── *_decision_curve.csv
-        │   ├── *_attention_global.csv
-        │   ├── *_occlusion.csv
-        │   ├── *_integrated_gradients_samples.csv
-        │   ├── *_rollout_receiver_score.csv
-        │   └── ABLATIONS_SUMMARY.csv    # Ablation comparison table
-        ├── metrics/                 # JSON summaries and timing
-        │   ├── *_summary.json
-        │   ├── *_complexity.json
-        │   ├── *_timing.json
-        │   └── *_history.csv        # Epoch-by-epoch training log
-        ├── models/                  # Saved checkpoints
-        │   └── *_best.pt
-        └── binary/                  # Binary classification outputs
-            ├── *_binary_metrics.csv
-            ├── *_binary_confusion_matrix.csv
-            └── *_binary_probs_calibrated.csv
-```
 
 ---
 
@@ -236,7 +185,7 @@ tqdm>=4.65.0
 
 The model uses the **Kılıçarslan et al. Anemia Disease Dataset** containing 15,300 CBC records from Tokat Gaziosmanpaşa University, Turkey (2013–2018).
 
-**Download:** [Kaggle – Anemia Disease Dataset](https://www.kaggle.com/datasets/serhathoca/anemia-disease)
+**Download:** [Kaggle: Anemia Disease Dataset](https://www.kaggle.com/datasets/serhathoca/anemia-disease)
 
 Place the CSV file in the project root:
 
@@ -369,7 +318,7 @@ Four complementary attribution methods provide multi-faceted interpretability:
 | **Integrated Gradients** | Gradient-based attribution | HGB, TSD, GENDER |
 | **Attention Rollout** | Multi-hop token information flow | HGB, GENDER, TSD |
 
-**Consensus features** (3/4 methods): **HGB**, **GENDER**, **TSD** — directly aligned with WHO anemia diagnostic criteria.
+**Consensus features** (3/4 methods): **HGB**, **GENDER**, **TSD** directly aligned with WHO anemia diagnostic criteria.
 
 ### Attention Specialization
 
